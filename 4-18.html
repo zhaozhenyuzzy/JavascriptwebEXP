@@ -1,0 +1,31 @@
+<html>
+    <meta charset="utf-8">
+<!--在节点后面插入节点-->
+<head>
+<script>
+//DOM没有提供insertAfter()方法
+function insertAfter(newElement, targetElement){
+    var parent = targetElement.parentNode;
+    if (parent.lastChild == targetElement) {
+        // 如果最后的节点是目标元素，则直接添加。因为默认是最后
+        parent.appendChild(newElement);
+    }
+    else {
+        parent.insertBefore(newElement, targetElement.nextSibling);
+        //如果不是，则插入在目标元素的下一个兄弟节点 的前面。也就是目标元素的后面
+    }
+}
+function insertP(){
+        var oOldP = document.getElementById("pTag");
+        var oNewP = document.createElement("p");
+        var oText = document.createTextNode("<在已知节点前面插入新节点");
+        oNewP.appendChild(oText);
+        insertAfter(oNewP, oOldP);//插入节点
+    }
+</script>
+</head>
+<body onload="insertP()">
+    <p id="pTag">段落P1</p>
+    <p>插入文字到这行文字之前</p>
+</body>
+</html>

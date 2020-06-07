@@ -1,0 +1,16 @@
+<html>
+<head>
+<script>
+    function insertP(){
+        var oOldP = document.getElementsByTagName("p")[0];
+        var oNewP = document.createElement("p");
+        var oText = document.createTextNode("在已知节点前面插入新节点");
+        oNewP.appendChild(oText);
+        oOldP.parentNode.insertBefore(oNewP, oOldP);//插入节点
+    }
+</script>
+</head>
+<body onload="insertP()">
+    <p>插入文字到这行文字之前</p>
+</body>
+</html>
